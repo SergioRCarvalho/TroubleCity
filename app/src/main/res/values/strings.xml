@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">TroubleCity</string>
+    <string name="add_nota">Adicionar nota</string>
+    <string name="empty_not_saved">Descrição por preencher</string>
+    <string name="descri_o">Descrição</string>
+    <string name="guardar">Guardar</string>
+    <string name="titulo">Titulo</string>
+    <string name="aviso_titulo">Não preencheu o campo de titulo</string>
+    <string name="aviso_desc">Não preencheu o campo de descrição</string>
+    <string name="aviso_campo">Não preencheu os campos</string>
+    <string name="_17_37">17:37</string>
+    <string name="_20_03_2021_sexta_feira">20/03/2021 Sexta-feira</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>
