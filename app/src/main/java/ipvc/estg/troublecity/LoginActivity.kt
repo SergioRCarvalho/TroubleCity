@@ -1,12 +1,21 @@
 package ipvc.estg.troublecity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import ipvc.estg.troublecity.api.EndPoints
+import ipvc.estg.troublecity.api.OutputPost
+import ipvc.estg.troublecity.api.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     lateinit var etEmail: EditText
@@ -57,16 +66,41 @@ class LoginActivity : AppCompatActivity() {
     }
 
     // Hook Click Event
-    fun performSignUp(v: View) {
-        if (validateInput()) {
+    fun performSignUp(view: View) {
 
-            // Input is valid, here send data to your server
-            val email = etEmail!!.text.toString()
-            val password = etPassword!!.text.toString()
-            Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
-            // Here you can call you API
-            // Check this tutorial to call server api through Google Volley Library https://handyopinion.com
+        var nr = findViewById<EditText>(R.id.et_email)
+        var pass = findViewById<EditText>(R.id.et_password)
+        val intent = Intent(this, LoginActivity::class.java)
+
+        if(nr.text.isNullOrEmpty() || pass.text.isNullOrEmpty()){
         }
+        else{
+            val request = ServiceBuilder.buildService(EndPoints::class.java)
+            val call = request.postLog("s@s.com", "12345678")
+            call.enqueue(object : Callback<List<OutputPost>>{
+                override fun onResponse(call: Call<List<OutputPost>>, response: Response<List<OutputPost>>) {
+                    if (response.isSuccessful){
+                        for(OutputPost in response.body()!!){
+                            //Shared Preferences Login
+                            val sharedPref: SharedPreferences = getSharedPreferences(
+                                getString(R.string.ofShared), Context.MODE_PRIVATE
+                            )
+                            with(sharedPref.edit()){
+                                putBoolean(getString(R.string.onShared), true)
+                                putString(getString(R.string.email), OutputPost.email)
+                                putInt(getString(R.string.password), OutputPost.id)
+                                commit()
+                            }
+                        }
+                        startActivity(intent)
+                    }
+                }
+                override fun onFailure(call: Call<List<OutputPost>>, t: Throwable) {
+                   Toast.makeText(this@LoginActivity, getString(R.string.login_erro), Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
     }
 
     fun goToSignup(v: View) {
@@ -75,4 +109,13 @@ class LoginActivity : AppCompatActivity() {
        // val intent = Intent(this, SignupActivity::class.java)
        // startActivity(intent)
     }
+
+
+
+
+
+
+
+
+
 }

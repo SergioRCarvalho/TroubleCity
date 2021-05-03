@@ -14,4 +14,5 @@
     <color name="body_black_light">#37474F</color>
     <color name="body">#EBF3E1</color>
     <color name="body_black_dark">#263238</color>
+    <color name="login_hint">#808080</color>
 </resources>

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "ipvc.estg.troublecity"
-        minSdkVersion 29
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -68,4 +68,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
+
+    // Retrofit
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
