@@ -14,4 +14,6 @@ interface  EndPoints {
     @POST("login")
     fun postLog(@Field("email") email: String, @Field("password") password: String): Call<List<OutputPost>>
 
+    @GET("markers")
+    fun getPontos(): Call<List<Markers>>
 }
