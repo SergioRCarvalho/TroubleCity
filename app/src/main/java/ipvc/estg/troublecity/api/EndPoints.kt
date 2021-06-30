@@ -4,14 +4,14 @@ import retrofit2.Callback
 import retrofit2.http.*
 
 interface  EndPoints {
-    @GET("api/user/{id}")
+    @GET("user/{id}")
     fun getUserById(@Path("id") id: Int): Call<utilizador>
 
-    @GET("api/users/")
+    @GET("users")
     fun getUsers(): Call<List<utilizador>>
 
     @FormUrlEncoded
-    @POST("api/login")
-    fun postLog(@Field("telemovel") telemovel: String, @Field("password") password: String): Call<List<OutputPost>>
+    @POST("login")
+    fun postLog(@Field("email") email: String, @Field("password") password: String): Call<List<OutputPost>>
 
 }

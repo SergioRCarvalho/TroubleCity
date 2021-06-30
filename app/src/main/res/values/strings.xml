@@ -22,6 +22,7 @@
     <string name="passwordlogin">passwordlogin</string>
     <string name="ofShared">ofShared</string>
     <string name="login_erro">Erro de credenciais</string>
+    <string name="login_sucesso">Bem vindo</string>
     <string name="notass">notas</string>
-    <string name="telemovel">telemovel</string>
+    <string name="id">id</string>
 </resources>

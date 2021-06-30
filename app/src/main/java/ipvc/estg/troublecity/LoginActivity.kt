@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
         }
         else{
             val request = ServiceBuilder.buildService(EndPoints::class.java)
-            val call = request.postLog(email.toString(), pass.toString())
+            val call = request.postLog(email.text.toString(), pass.text.toString())
             call.enqueue(object : Callback<List<OutputPost>>{
                 override fun onResponse(call: Call<List<OutputPost>>, response: Response<List<OutputPost>>) {
                     if (response.isSuccessful){
@@ -87,12 +87,12 @@ class LoginActivity : AppCompatActivity() {
                             )
                             with(sharedPref.edit()){
                                 putBoolean(getString(R.string.onShared), true)
-                                putInt(getString(R.string.telemovel), OutputPost.telemovel)
-                                putInt(getString(R.string.password), OutputPost.id)
+                                putInt(getString(R.string.id), OutputPost.id)
                                 commit()
                             }
                         }
-                  //      startActivity(intent)
+                        Toast.makeText(this@LoginActivity, getString(R.string.login_sucesso), Toast.LENGTH_SHORT).show()
+                        //      startActivity(intent)
                     }
                 }
                 override fun onFailure(call: Call<List<OutputPost>>, t: Throwable) {

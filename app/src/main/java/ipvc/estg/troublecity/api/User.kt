@@ -5,7 +5,7 @@ import java.util.*
 data class utilizador(
     val id:Int,
     val nome:String,
-    val telemovel:Int,
+    val email:String,
     val password:String
   //  val email:String
 )
