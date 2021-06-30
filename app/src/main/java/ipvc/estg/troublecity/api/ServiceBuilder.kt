@@ -9,7 +9,7 @@ object ServiceBuilder {
 
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://sergioapis.x10host.com/android/")
+        .baseUrl("https://sergiopersonal.000webhostapp.com/myslim/index.php/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

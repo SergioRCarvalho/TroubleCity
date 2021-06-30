@@ -11,10 +11,6 @@
     <string name="_17_37">17:37</string>
     <string name="_20_03_2021_sexta_feira">20/03/2021 Sexta-feira</string>
     <string name="title_activity_login">LoginActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
     <string name="hello_world">Hello Square World!</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -26,4 +22,6 @@
     <string name="passwordlogin">passwordlogin</string>
     <string name="ofShared">ofShared</string>
     <string name="login_erro">Erro de credenciais</string>
+    <string name="notass">notas</string>
+    <string name="telemovel">telemovel</string>
 </resources>

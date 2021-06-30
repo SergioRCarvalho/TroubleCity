@@ -14,6 +14,7 @@ import ipvc.estg.troublecity.R
 import ipvc.estg.troublecity.Notas_detalhes
 import ipvc.estg.room.entities.Notas
 import ipvc.estg.troublecity.MainActivity
+import ipvc.estg.troublecity.NotasActivity
 
 const val ID = "ID"
 const val DESCRICAO = "DESCRICAO"
@@ -25,7 +26,7 @@ const val DATA = "DATA"
 
 
 class notasAdapter internal constructor(
-    context: Context, private val callbackInterface: MainActivity
+    context: Context, private val callbackInterface: NotasActivity
 ) : RecyclerView.Adapter<notasAdapter.NotasViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)

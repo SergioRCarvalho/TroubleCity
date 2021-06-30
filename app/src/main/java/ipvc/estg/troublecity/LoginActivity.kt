@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        viewInitializations()
+      //  viewInitializations()
     }
 
     fun viewInitializations() {
@@ -68,15 +68,15 @@ class LoginActivity : AppCompatActivity() {
     // Hook Click Event
     fun performSignUp(view: View) {
 
-        var nr = findViewById<EditText>(R.id.et_email)
+        var email = findViewById<EditText>(R.id.et_email)
         var pass = findViewById<EditText>(R.id.et_password)
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
 
-        if(nr.text.isNullOrEmpty() || pass.text.isNullOrEmpty()){
+        if(email.text.isNullOrEmpty() || pass.text.isNullOrEmpty()){
         }
         else{
             val request = ServiceBuilder.buildService(EndPoints::class.java)
-            val call = request.postLog("s@s.com", "12345678")
+            val call = request.postLog(email.toString(), pass.toString())
             call.enqueue(object : Callback<List<OutputPost>>{
                 override fun onResponse(call: Call<List<OutputPost>>, response: Response<List<OutputPost>>) {
                     if (response.isSuccessful){
@@ -87,12 +87,12 @@ class LoginActivity : AppCompatActivity() {
                             )
                             with(sharedPref.edit()){
                                 putBoolean(getString(R.string.onShared), true)
-                                putString(getString(R.string.email), OutputPost.email)
+                                putInt(getString(R.string.telemovel), OutputPost.telemovel)
                                 putInt(getString(R.string.password), OutputPost.id)
                                 commit()
                             }
                         }
-                        startActivity(intent)
+                  //      startActivity(intent)
                     }
                 }
                 override fun onFailure(call: Call<List<OutputPost>>, t: Throwable) {
@@ -102,20 +102,5 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
-    fun goToSignup(v: View) {
-        // Open your SignUp Activity if the user wants to signup
-        // Visit this article to get SignupActivity code https://handyopinion.com/signup-activity-in-android-studio-kotlin-java/
-       // val intent = Intent(this, SignupActivity::class.java)
-       // startActivity(intent)
-    }
-
-
-
-
-
-
-
-
 
 }
