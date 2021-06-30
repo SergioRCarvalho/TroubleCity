@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
         var email = findViewById<EditText>(R.id.et_email)
         var pass = findViewById<EditText>(R.id.et_password)
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MapsActivity::class.java)
 
         if(email.text.isNullOrEmpty() || pass.text.isNullOrEmpty()){
         }
@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                             }
                         }
                         Toast.makeText(this@LoginActivity, getString(R.string.login_sucesso), Toast.LENGTH_SHORT).show()
-                        //      startActivity(intent)
+                        startActivity(intent)
                     }
                 }
                 override fun onFailure(call: Call<List<OutputPost>>, t: Throwable) {
