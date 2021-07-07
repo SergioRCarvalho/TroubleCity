@@ -205,17 +205,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
-   /* private fun createProblem(problem: String,type:String) {
+    private fun createProblem(problem: String,type:String) {
         val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val call = request.addProblem(
-            problem = problem,
-            lat = currentLocation.latitude.toString(),
-            long = currentLocation.longitude.toString(),
-            userId = userId.toString(),
-            type = type
+        val call = request.postProblem(
+            id_utilizador = userId,
+            lat = currentLocation.latitude,
+            lng = currentLocation.longitude,
+            local = "teste",
+                img="teste",
+                data="2021-01-02",
+                descricao = "asdsad"
         )
-        call.enqueue(object : Callback<Problem> {
-            override fun onResponse(call: Call<Problem>, response: Response<Problem>) {
+        call.enqueue(object : Callback<Markers> {
+            override fun onResponse(call: Call<Markers>, response: Response<Markers>) {
                 if (response.isSuccessful) {
                     val problem = response.body()
                     if (problem?.id!! > 0) {
@@ -226,9 +228,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         ).show()
                         Log.d("ITEM", "hey " + response.body().toString())
 
-                        val sydney = LatLng(problem.lat.toDouble(), problem.lon.toDouble())
+                        val sydney = LatLng(problem.lat.toDouble(), problem.lng.toDouble())
                         mMap.addMarker(MarkerOptions().position(sydney).title("Marker"))
-
 
                     } else {
                         Toast.makeText(
@@ -240,11 +241,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
 
-            override fun onFailure(call: Call<Problem>, t: Throwable) {
+            override fun onFailure(call: Call<Markers>, t: Throwable) {
                 Toast.makeText(this@MapsActivity, t.message, Toast.LENGTH_SHORT).show()
             }
         })
-    }*/
+    }
 
    /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

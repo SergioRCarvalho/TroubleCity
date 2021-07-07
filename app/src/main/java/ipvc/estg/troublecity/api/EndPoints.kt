@@ -16,4 +16,7 @@ interface  EndPoints {
 
     @GET("markers")
     fun getPontos(): Call<List<Markers>>
+
+    @GET("addreport")
+    fun postProblem(@Field("id_utilizador") id_utilizador: Int, @Field("descricao") descricao: String, @Field("local") local: String, @Field("data") data: String, @Field("lat") lat: Double, @Field("lng") lng: Double, @Field("img") img: String): Call<List<Markers>>
 }
