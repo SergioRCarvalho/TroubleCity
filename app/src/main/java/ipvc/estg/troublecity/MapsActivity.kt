@@ -61,9 +61,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab1)
         fab.setOnClickListener {
-            val intent = Intent(this@MapsActivity, Reportar::class.java)
-            intent.putExtra("LAT", currentLocation.latitude)
-            intent.putExtra("LONG", currentLocation.longitude)
+            val intent = Intent(this@MapsActivity, AddProblem::class.java)
+            intent.putExtra("LAT", currentLocation.latitude.toString())
+            intent.putExtra("LONG", currentLocation.longitude.toString())
             startActivityForResult(intent, newAddProblemActivityRequestCode)
         }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -180,15 +180,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         )
                     }
 
-                  //  val customInfoWindow = CustomWindow(this@MapsActivity)
+                  // val customInfoWindow = CustomWindow(this@MapsActivity)
 
-                 //  mMap!!.setInfoWindowAdapter(customInfoWindow)
+                  // mMap!!.setInfoWindowAdapter(customInfoWindow)
 
                     val marker = mMap!!.addMarker(markerOptions)
                     marker.tag = problem.descricao
                     marker.showInfoWindow()
                     mMap.setOnInfoWindowClickListener {
-                        val intent = Intent(this@MapsActivity, Reportar::class.java)
+                        val intent = Intent(this@MapsActivity, AddProblem::class.java)
                         intent.putExtra("LAT", problem.lat)
                         intent.putExtra("LONG", problem.lng)
                         intent.putExtra("PROBLEM", problem.descricao)
@@ -201,46 +201,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             override fun onFailure(call: Call<List<Markers>>, t: Throwable) {
                 Log.d("ITEM", "erro " + t.message)
-                Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MapsActivity, "Erro", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun createProblem(problem: String,type:String) {
+    private fun createProblem(problem: String) {
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.postProblem(
             id_utilizador = userId,
-            lat = currentLocation.latitude,
-            lng = currentLocation.longitude,
+            lat = currentLocation.latitude.toString(),
+            lng = currentLocation.longitude.toString(),
             local = "teste",
                 img="teste",
-                data="2021-01-02",
-                descricao = "asdsad"
+                data="2021-07-12",
+                descricao = problem
         )
         call.enqueue(object : Callback<Markers> {
             override fun onResponse(call: Call<Markers>, response: Response<Markers>) {
-                if (response.isSuccessful) {
-                    val problem = response.body()
-                    if (problem?.id!! > 0) {
-                        Toast.makeText(
-                                this@MapsActivity,
-                                "Login realizado com sucesso! ",
-                                Toast.LENGTH_SHORT
-                        ).show()
-                        Log.d("ITEM", "hey " + response.body().toString())
-
-                        val sydney = LatLng(problem.lat.toDouble(), problem.lng.toDouble())
-                        mMap.addMarker(MarkerOptions().position(sydney).title("Marker"))
-
-
-                    } else {
-                        Toast.makeText(
-                                this@MapsActivity,
-                                "login falhou",
-                                Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
             }
 
             override fun onFailure(call: Call<Markers>, t: Throwable) {
@@ -254,9 +232,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if (requestCode == newAddProblemActivityRequestCode && resultCode == Activity.RESULT_OK) {
 
             val problem = data?.getStringExtra(AddProblem.EXTRA_REPLY_PROBLEM)
-            val type = data?.getStringExtra(AddProblem.EXTRA_REPLY_TYPE)
-            if (type != null && problem != null) {
-                createProblem(problem,type)
+            if (problem != null) {
+                createProblem(problem)
                 getPointsWS()
             }
 
@@ -275,7 +252,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val userId = data?.getIntExtra(AddProblem.EXTRA_REPLY_USERID, 0)
             val lat = data?.getStringExtra(AddProblem.EXTRA_REPLY_LAT)
             val long = data?.getStringExtra(AddProblem.EXTRA_REPLY_LONG)
-            val type = data?.getStringExtra(AddProblem.EXTRA_REPLY_TYPE)
 
 
             val request = ServiceBuilder.buildService(EndPoints::class.java)
@@ -284,8 +260,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 lat = lat,
                 long = long,
                 userId = userId,
-                id = id,
-                type = type
+                id = id
             )
             call.enqueue(object : Callback<Markers> {
                 override fun onResponse(call: Call<Markers>, response: Response<Markers>) {
