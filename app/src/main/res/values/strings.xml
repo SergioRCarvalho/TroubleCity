@@ -28,4 +28,12 @@
     <string name="title_activity_maps">Map</string>
     <string name="add_word">+</string>
     <string name="title_activity_report">Report</string>
+    <string name="empty_fields">campos vazios</string>
+    <string name="traffic">Traffic</string>
+    <string name="accident">Accident</string>
+    <string name="type">Type</string>
+    <string name="problem">problema</string>
+    <string name="save">gravar</string>
+    <string name="description">descricao</string>
+    <string name="problemLbl">poble1</string>
 </resources>

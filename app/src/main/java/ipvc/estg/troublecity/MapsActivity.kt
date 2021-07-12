@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import ipvc.estg.troublecity.adapters.CustomWindow
 import ipvc.estg.troublecity.api.EndPoints
 import ipvc.estg.troublecity.api.Markers
 import ipvc.estg.troublecity.api.ServiceBuilder
@@ -179,9 +180,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         )
                     }
 
-                    //val customInfoWindow = CustomWindow(this@MapsActivity)
+                  //  val customInfoWindow = CustomWindow(this@MapsActivity)
 
-                  //  mMap!!.setInfoWindowAdapter(customInfoWindow)
+                 //  mMap!!.setInfoWindowAdapter(customInfoWindow)
 
                     val marker = mMap!!.addMarker(markerOptions)
                     marker.tag = problem.descricao
@@ -222,20 +223,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     val problem = response.body()
                     if (problem?.id!! > 0) {
                         Toast.makeText(
-                            this@MapsActivity,
-                            "Login realizado com sucesso! ",
-                            Toast.LENGTH_SHORT
+                                this@MapsActivity,
+                                "Login realizado com sucesso! ",
+                                Toast.LENGTH_SHORT
                         ).show()
                         Log.d("ITEM", "hey " + response.body().toString())
 
                         val sydney = LatLng(problem.lat.toDouble(), problem.lng.toDouble())
                         mMap.addMarker(MarkerOptions().position(sydney).title("Marker"))
 
+
                     } else {
                         Toast.makeText(
-                            this@MapsActivity,
-                            "login falhou",
-                            Toast.LENGTH_LONG
+                                this@MapsActivity,
+                                "login falhou",
+                                Toast.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -247,7 +249,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
-   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == newAddProblemActivityRequestCode && resultCode == Activity.RESULT_OK) {
 
@@ -285,12 +287,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 id = id,
                 type = type
             )
-            call.enqueue(object : Callback<Problem> {
-                override fun onResponse(call: Call<Problem>, response: Response<Problem>) {
+            call.enqueue(object : Callback<Markers> {
+                override fun onResponse(call: Call<Markers>, response: Response<Markers>) {
                     getPointsWS()
                 }
 
-                override fun onFailure(call: Call<Problem>, t: Throwable) {
+                override fun onFailure(call: Call<Markers>, t: Throwable) {
                     Toast.makeText(this@MapsActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
 
@@ -306,7 +308,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             ).show()
         }
     }
-}*/
+}
 
     /**
      * Manipulates the map once available.
@@ -317,4 +319,3 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-}
