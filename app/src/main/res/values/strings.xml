@@ -1,39 +1,39 @@
 <resources>
     <string name="app_name">TroubleCity</string>
-    <string name="add_nota">Adicionar nota</string>
-    <string name="empty_not_saved">Descrição por preencher</string>
-    <string name="descri_o">Descrição</string>
+    <string name="add_nota">add note</string>
+    <string name="empty_not_saved">empty field</string>
+    <string name="descri_o">Desc</string>
     <string name="guardar">Guardar</string>
     <string name="titulo">Titulo</string>
     <string name="aviso_titulo">Não preencheu o campo de titulo</string>
     <string name="aviso_desc">Não preencheu o campo de descrição</string>
     <string name="aviso_campo">Não preencheu os campos</string>
-    <string name="_17_37">17:37</string>
-    <string name="_20_03_2021_sexta_feira">20/03/2021 Sexta-feira</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="_17_37" translatable="false">17:37</string>
+    <string name="_20_03_2021_sexta_feira" translatable="false">20/03/2021 Sexta-feira</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
     <string name="hello_world">Hello Square World!</string>
-    <string name="email">Email</string>
+    <string name="email">Mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="account_login">Account Login</string>
     <string name="already_have_an_account">Already have an account?</string>
-    <string name="onShared">onShared</string>
+    <string name="onShared" translatable="false">onShared</string>
     <string name="emaillogin">emaillogin</string>
     <string name="passwordlogin">passwordlogin</string>
-    <string name="ofShared">ofShared</string>
-    <string name="login_erro">Erro de credenciais</string>
-    <string name="login_sucesso">Bem vindo</string>
-    <string name="notass">notas</string>
-    <string name="id">id</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="add_word">+</string>
+    <string name="ofShared" translatable="false">ofShared</string>
+    <string name="login_erro">Error</string>
+    <string name="login_sucesso">Welcome</string>
+    <string name="notass">notes</string>
+    <string name="id" translatable="false">id</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="add_word" translatable="false">+</string>
     <string name="title_activity_report">Report</string>
-    <string name="empty_fields">campos vazios</string>
+    <string name="empty_fields">empty fields</string>
     <string name="traffic">Traffic</string>
     <string name="accident">Accident</string>
     <string name="type">Type</string>
-    <string name="problem">problema</string>
-    <string name="save">gravar</string>
-    <string name="description">descricao</string>
-    <string name="problemLbl">poble1</string>
+    <string name="problem">Problem</string>
+    <string name="save">Save</string>
+    <string name="description">Desc</string>
+    <string name="problemLbl" translatable="false">poble1</string>
 </resources>

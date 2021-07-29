@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TroubleCity</string>
+    <string name="add_nota">Adicionar nota</string>
+    <string name="empty_not_saved">Descrição por preencher</string>
+    <string name="descri_o">Descrição</string>
+    <string name="guardar">Guardar</string>
+    <string name="titulo">Titulo</string>
+    <string name="aviso_titulo">Não preencheu o campo de titulo</string>
+    <string name="aviso_desc">Não preencheu o campo de descricao</string>
+    <string name="aviso_campo">Não preencheu o campo de campo</string>
+    <string name="email">Email</string>
+    <string name="password">pass</string>
+    <string name="login">Entrar</string>
+    <string name="account_login">Entrar</string>
+    <string name="emaillogin">email</string>
+    <string name="already_have_an_account">Ja tem uma conta?</string>
+    <string name="passwordlogin">pass</string>
+    <string name="login_erro">Erro de credenciais</string>
+    <string name="login_sucesso">Bem vindo</string>
+    <string name="notass">notas</string>
+    <string name="title_activity_report">Reportar</string>
+    <string name="empty_fields">campos vazios</string>
+    <string name="traffic">trafego</string>
+    <string name="accident">Acidente</string>
+    <string name="type">Tipo</string>
+    <string name="problem">problema</string>
+    <string name="save">gravar</string>
+    <string name="description">descricao</string>
+    <string name="hello_world">ola</string>
+</resources>

@@ -15,7 +15,8 @@
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <activity android:name=".AddProblem" />
+        <activity android:name=".AddProblem"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".MapsActivity"
@@ -29,8 +30,10 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".Notas_detalhes" />
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Notas_detalhes"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

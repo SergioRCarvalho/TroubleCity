@@ -2,8 +2,9 @@ package ipvc.estg.troublecity
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.res.Configuration
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -28,7 +29,12 @@ class NotasActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = notasAdapter(this,this)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(this,2)
+        val orientation = resources.configuration.orientation
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.layoutManager = GridLayoutManager(this,4)
+        } else {
+            recyclerView.layoutManager = GridLayoutManager(this,2)
+        }
 
         // view model
         notasViewModel = ViewModelProvider(this).get(NotasViewModel::class.java)

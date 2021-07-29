@@ -1,7 +1,9 @@
 package ipvc.estg.troublecity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -21,6 +23,7 @@ import ipvc.estg.troublecity.adapters.notasAdapter
 class MainActivity : AppCompatActivity() {
 
 
+    private lateinit var sharedPreferences: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +38,15 @@ class MainActivity : AppCompatActivity() {
          startActivity(intent)
     }
     fun goToLogin(view: View) {
-         val intent = Intent(this, LoginActivity::class.java)
-         startActivity(intent)
+        if (getSharedPreferences(getString(R.string.ofShared), Context.MODE_PRIVATE)==null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        else {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 
